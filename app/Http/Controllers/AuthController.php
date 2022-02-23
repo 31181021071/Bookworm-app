@@ -14,11 +14,16 @@ class AuthController extends Controller
             'email.email'=>"Lỗi Email",
             'email.required'=>"Nhập Email",
             'password.required'=>"Nhập mật khẩu",
+            'password.max'=>"Mật khẩu quá dài",
+            'first_name.required'=>"Nhập Tên",
+            'last_name.required'=>"Nhập Họ",
         ];
 
         $validate = Validator::make($request->all(),[
-            'email'=>'email|required',
-            'password'=>'required',
+            'email'=>'email|required|unique:user',
+            'password'=>'required|max:50',
+            'first_name'=>'required',
+            'last_name'=>'required'
         ],$message);
 
         if ($validate->fails()){
@@ -52,7 +57,7 @@ class AuthController extends Controller
         if (!$user || !Hash::check($request->password,$user->password,[])){
             return response()->json(
                 [
-                    'message'=>"tài khoản không tồn tại"
+                    'message'=>"Email or Password is wrong!!!"
                 ],
                 404
             );

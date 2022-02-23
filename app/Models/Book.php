@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Discount;
 
 class Book extends Model
 {
@@ -11,4 +12,5 @@ class Book extends Model
 
     public $timestamps = false;
     protected $table = 'book';
+
 }

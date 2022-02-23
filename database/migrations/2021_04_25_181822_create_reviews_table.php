@@ -21,6 +21,7 @@ class CreateReviewsTable extends Migration
             $table->timestamp('review_date');
             $table->enum('rating_start', [1, 2, 3, 4, 5]);
         });
+
     }
 
     /**
